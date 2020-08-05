@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="navbar-fixed">
+    <nav>
+        <div class="container">
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{% url 'home' %}">Home</a> </li>
+                {% if user.is_authenticated  %}
+                    {% if user.is_admin %}
+                    <li><a href="{% url 'User:signup' %}">Create Customer</a> </li>
+                        <li><a href="{% url 'tasks:users_prior_list' %}" >Click Priority task of users</a></li>
+                     {% endif %}
+                         <li><a href="{% url 'tasks:create_task_list' %}">Create TaskList</a> </li>
+                        <li><a href="{% url 'User:logout' %}">Logout</a> </li>
+                    <li><a href="{% url 'tasks:task_lists' %}"> TaskList view</a></li>
+                {% else %}
+                    <li><a href="{% url 'User:login' %}">Login</a> </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>
+{% endblock content %}

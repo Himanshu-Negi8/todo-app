@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+{% block title %} Tasks {% endblock %}
+
+{% block content %}
+    {% for item in tasks_list %}
+        <label>Task name:</label>{{ item.task_name }}
+        <label>Task is done:</label>{{ item.is_done }}
+        <label>Task list is : </label>{{ item.task_list }}<br>
+    {% endfor %}
+{% endblock %}

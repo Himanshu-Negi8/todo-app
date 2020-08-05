@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{%  load bootstrap4 %}
+
+{% block content %}
+
+    {% if priority%}
+    {{ priority.list_name }}
+    {% else %}
+        {{ dsfadf }}
+    {% endif %}
+{% endblock %}

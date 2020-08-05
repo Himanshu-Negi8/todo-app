@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{%  load bootstrap4 %}
+
+
+{% block title %} Lists{% endblock %}
+
+{% block content %}
+
+{% for user in user %}
+
+    <li><a href="{% url 'tasks:user_priority_task' slug=user.username %}"> See {{ user.username }} Priority todo lists </a> </li>
+{% endfor %}
+
+{% endblock %}

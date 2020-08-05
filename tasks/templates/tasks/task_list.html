@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+
+
+    <section class="section section-showcase">
+    <div class="container">
+          <div class="row">
+    <ul>
+    {% for task_list in tasklist_list %}
+
+        {% if request.user == task_list.user  or  request.user.is_admin%}
+
+         <li><label>Username : </label>{{ task_list.user }} </li>
+
+            <li><label>List name is :</label>{{task_list.list_name}}  </li>
+
+        <li><label>Priority of task : </label>{{ task_list.priority_list }}</li>
+            <li><a href="{% url 'tasks:task_list_item' slug=task_list.task_list_slug %}" >Click to see tasks  </a></li>
+        <li><a href="{% url 'tasks:create_task' slug=task_list.task_list_slug %}"> Create task in this list</a></li>
+        <li><a href="{% url 'tasks:update_task_priority' slug=task_list.task_list_slug %}"> Update task Priority </a></li>
+
+
+        {% endif %}
+
+    </ul>
+
+
+          </div>
+
+
+    {% endfor %}
+    </div>
+    </section>
+
+{% endblock %}
